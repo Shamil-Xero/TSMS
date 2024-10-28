@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&display=swap" rel="stylesheet">
+    <title>Pants Measurements</title>
+    <style>
+        .form-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .measurement-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            background-image: linear-gradient(
+                to right,
+                var(--secondary-color) 0%,
+                var(--primary-color) 51%,
+                rgb(13, 198, 240) 100%
+            );
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .btn-submit:hover {
+            background-position: right center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Pants Measurements</h1>
+        <form id="pantsForm">
+            <div class="measurement-group">
+                <div class="input-group">
+                    <label for="waist">Waist (inches)</label>
+                    <input type="number" id="waist" name="waist" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="hips">Hips (inches)</label>
+                    <input type="number" id="hips" name="hips" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="thigh">Thigh (inches)</label>
+                    <input type="number" id="thigh" name="thigh" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="knee">Knee (inches)</label>
+                    <input type="number" id="knee" name="knee" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="calf">Calf (inches)</label>
+                    <input type="number" id="calf" name="calf" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="inseam">Inseam Length (inches)</label>
+                    <input type="number" id="inseam" name="inseam" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="outseam">Outseam Length (inches)</label>
+                    <input type="number" id="outseam" name="outseam" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="ankleWidth">Ankle Width (inches)</label>
+                    <input type="number" id="ankleWidth" name="ankleWidth" step="0.1" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">Submit Measurements</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('pantsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Measurements submitted successfully!');
+        });
+    </script>
+</body>
+</html>

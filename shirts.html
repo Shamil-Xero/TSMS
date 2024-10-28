@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shirt Measurements</title>
+    <style>
+        body {
+            font-family: 'Libre Franklin', sans-serif;
+            background: rgba(85, 61, 17, 0.403);
+            backdrop-filter: blur(10px);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+
+        .measurement-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-submit {
+            background-image: linear-gradient(
+                to right,
+                var(--secondary-color) 0%,
+                var(--primary-color) 51%,
+                rgb(13, 198, 240) 100%
+            );
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: 0.5s;
+            background-size: 200% auto;
+        }
+
+        .btn-submit:hover {
+            background-position: right center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Shirt Measurements</h1>
+        <form id="shirtForm">
+            <div class="measurement-group">
+                <div class="input-group">
+                    <label for="neck">Neck (inches)</label>
+                    <input type="number" id="neck" name="neck" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="chest">Chest (inches)</label>
+                    <input type="number" id="chest" name="chest" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="waist">Waist (inches)</label>
+                    <input type="number" id="waist" name="waist" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="hips">Hips (inches)</label>
+                    <input type="number" id="hips" name="hips" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="shoulder">Shoulder Width (inches)</label>
+                    <input type="number" id="shoulder" name="shoulder" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="sleeve">Sleeve Length (inches)</label>
+                    <input type="number" id="sleeve" name="sleeve" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="length">Shirt Length (inches)</label>
+                    <input type="number" id="length" name="length" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="bicep">Bicep (inches)</label>
+                    <input type="number" id="bicep" name="bicep" step="0.1" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">Submit Measurements</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('shirtForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Measurements submitted successfully!');
+        });
+    </script>
+</body>
+</html>

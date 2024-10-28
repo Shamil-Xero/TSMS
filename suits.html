@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suit Measurements</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Libre Franklin', sans-serif;
+            background-image: url(/Files/BG/Suits-1.jpg);
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .measurement-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover {
+            background: #1565a5;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Suit Measurements</h1>
+        <form id="suitForm">
+            <div class="measurement-group">
+                <!-- Jacket Measurements -->
+                <div class="input-group">
+                    <label for="chest">Chest (inches)</label>
+                    <input type="number" id="chest" name="chest" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="waist">Waist (inches)</label>
+                    <input type="number" id="waist" name="waist" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="hips">Hips (inches)</label>
+                    <input type="number" id="hips" name="hips" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="shoulder">Shoulder Width (inches)</label>
+                    <input type="number" id="shoulder" name="shoulder" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="sleeve">Sleeve Length (inches)</label>
+                    <input type="number" id="sleeve" name="sleeve" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="jacketLength">Jacket Length (inches)</label>
+                    <input type="number" id="jacketLength" name="jacketLength" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="neck">Neck (inches)</label>
+                    <input type="number" id="neck" name="neck" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="bicep">Bicep (inches)</label>
+                    <input type="number" id="bicep" name="bicep" step="0.1" required>
+                </div>
+
+                <!-- Trouser Measurements -->
+                <div class="input-group">
+                    <label for="trouserWaist">Trouser Waist (inches)</label>
+                    <input type="number" id="trouserWaist" name="trouserWaist" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="trouserHips">Trouser Hips (inches)</label>
+                    <input type="number" id="trouserHips" name="trouserHips" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="thigh">Thigh (inches)</label>
+                    <input type="number" id="thigh" name="thigh" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="knee">Knee (inches)</label>
+                    <input type="number" id="knee" name="knee" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="inseam">Inseam Length (inches)</label>
+                    <input type="number" id="inseam" name="inseam" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="outseam">Outseam Length (inches)</label>
+                    <input type="number" id="outseam" name="outseam" step="0.1" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">Submit Measurements</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('suitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Suit measurements submitted successfully!');
+        });
+    </script>
+</body>
+</html>

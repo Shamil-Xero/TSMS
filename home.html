@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="home.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,6 +11,173 @@
       rel="stylesheet"
     />
     <title>Tailz</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg-color: #f6f6f9;
+        --text-color: #363949;
+        --primary-color: rgb(121, 78, 0);
+        --secondary-color: rgb(147, 129, 28);
+        --danger-color: #c63227;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        --transition: all 0.3s ease;
+        --add-button-color: #4caf50;
+        --theme-toggle-color: #413b4455;
+      }
+
+      body {
+        background-image: url(/Files/BG/Tailor-1.jpg);
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        backdrop-filter: blur(3px);
+        background-position: relative;
+      }
+
+      .attire-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 2rem;
+      }
+
+      .box {
+        width: 30%;
+        height: 80%;
+        background: rgba(85, 61, 17, 0.403);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 3rem;
+        font-family: "Courier New", Courier, monospace;
+        color: white;
+        text-decoration: none;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease;
+        animation: slideIn 1s ease forwards;
+        opacity: 0;
+      }
+
+      .box:hover {
+        transform: translateY(-10px);
+      }
+
+      .box:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+
+      .box:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+
+      .box:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      #Shirts {
+        background-image: url(/Files/Shirt-1.jpg);
+        background-size: cover;
+        background-position: relative;
+      }
+
+      #Pants {
+        background-image: url(/Files/Pant-1.jpg);
+        background-size: 180%;
+        background-position: bottom 30% left 45%;
+      }
+
+      #Suits {
+        background-image: url(/Files/Suit-1.jpg);
+        /* background-size: 200%; */
+        background-size: cover;
+        background-position: center;
+        /* background-position: bottom 30% left 45%; */
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .records-link {
+        text-decoration: none;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 460px;
+        z-index: 1000;
+      }
+
+      .records-box {
+        background: rgba(210, 210, 210, 0.9);
+        backdrop-filter: blur(10px);
+        padding: 15px 25px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        animation: slideIn 1s ease forwards;
+        animation-delay: 0.7s;
+
+        opacity: 0;
+      }
+
+      .records-box:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        background: rgba(255, 255, 255, 0.95);
+      }
+
+      .records-icon {
+        color: #008ecf;
+        font-size: 1.2rem;
+      }
+
+      .records-box span {
+        color: #333;
+        font-weight: 500;
+        margin: 0 15px;
+      }
+
+      .arrow-icon {
+        color: #008ecf;
+        font-size: 1rem;
+      }
+
+      .records-box:hover .arrow-icon {
+        animation: bounceRight 0.8s infinite;
+      }
+
+      @keyframes bounceRight {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(5px); }
+      }
+
+      @media (max-width: 768px) {
+        .records-link {
+          bottom: 90px;
+        }
+      }
+    </style>
   </head>
   <body>
     <nav></nav>
@@ -20,6 +186,17 @@
       <a href="/pants.html" class="box" id="Pants">Pants</a>
       <a href="/suits.html" class="box" id="Suits">Suits</a>
     </div>
+    <a href="records.html" class="records-link">
+      <div class="records-box">
+        <div class="records-icon">
+          <i class="fas fa-folder-open"></i>
+        </div>
+        <span>View All Records</span>
+        <div class="arrow-icon">
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+    </a>
     <script type="text/javascript" src="home.js"></script>
   </body>
 </html>

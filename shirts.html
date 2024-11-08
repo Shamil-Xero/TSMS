@@ -1,132 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shirt Measurements</title>
     <style>
-        body {
-            font-family: 'Libre Franklin', sans-serif;
-            background: rgba(85, 61, 17, 0.403);
-            backdrop-filter: blur(10px);
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-        }
+      :root {
+        --bg-color: #f6f6f9;
+        --text-color: #363949;
+        --primary-color: rgb(121, 78, 0);
+        --secondary-color: rgb(147, 129, 28);
+        --danger-color: #c63227;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        --transition: all 0.3s ease;
+        --add-button-color: #4caf50;
+        --theme-toggle-color: #413b4455;
+      }
+      body {
+        font-family: "Libre Franklin", sans-serif;
+        background: rgba(85, 61, 17, 0.403);
+        background-image: url(/Files/BG/Shirts-1.jpg);
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: cover;
+        position: fixed;
+        backdrop-filter: blur(5px);
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+      }
 
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
+      .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        animation: slideIn 0.8s ease-out forwards;
+        /* position: relative; */
+        top: 90px;
+      }
 
-        h1 {
-            text-align: center;
-            color: var(--text-color);
-            margin-bottom: 30px;
-        }
+      h1 {
+        text-align: center;
+        color: var(--text-color);
+        margin-bottom: 30px;
+      }
 
-        .measurement-group {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 20px;
-        }
+      .measurement-group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-bottom: 20px;
+        margin-right: 10px;
+      }
 
-        .input-group {
-            margin-bottom: 15px;
-        }
+      .input-group {
+        margin-bottom: 15px;
+        opacity: 0;
+        animation: fadeInUp 0.5s ease-out forwards;
+      }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--text-color);
-        }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--text-color);
+      }
 
-        input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+      input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
 
-        .btn-submit {
-            background-image: linear-gradient(
-                to right,
-                var(--secondary-color) 0%,
-                var(--primary-color) 51%,
-                rgb(13, 198, 240) 100%
-            );
-            padding: 15px 45px;
-            text-align: center;
-            text-transform: uppercase;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-            transition: 0.5s;
-            background-size: 200% auto;
-        }
+      .btn-submit {
+        background-image: linear-gradient(
+          to right,
+          var(--secondary-color) 0%,
+          var(--primary-color) 100%
+        );
+        padding: 15px 45px;
+        text-align: center;
+        text-transform: uppercase;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 101%;
+        font-size: 16px;
+        transition: 0.5s;
+        background-size: 200% auto;
+        opacity: 0;
+        animation: fadeInUp 0.5s ease-out 1.1s forwards;
+      }
 
-        .btn-submit:hover {
-            background-position: right center;
+      .btn-submit:hover {
+        background-position: right center;
+      }
+
+      @keyframes slideIn {
+        0% {
+          transform: translateY(100px);
+          opacity: 0;
         }
+        100% {
+          transform: translateY(50px);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .measurement-group .input-group:nth-child(1) {
+        animation-delay: 0.3s;
+      }
+      .measurement-group .input-group:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .measurement-group .input-group:nth-child(3) {
+        animation-delay: 0.5s;
+      }
+      .measurement-group .input-group:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+      .measurement-group .input-group:nth-child(5) {
+        animation-delay: 0.7s;
+      }
+      .measurement-group .input-group:nth-child(6) {
+        animation-delay: 0.8s;
+      }
+      .measurement-group .input-group:nth-child(7) {
+        animation-delay: 0.9s;
+      }
+      .measurement-group .input-group:nth-child(8) {
+        animation-delay: 1s;
+      }
+
+      .remarks-group {
+        margin: 20px 0;
+        opacity: 0;
+        animation: fadeInUp 0.5s ease-out 1.1s forwards;
+      }
+
+      .remarks-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--text-color);
+      }
+
+      .remarks-group textarea {
+        width: 97%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        font-family: inherit;
+        resize: vertical;
+        min-height: 80px;
+        background: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+      }
+
+      .remarks-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(0, 142, 207, 0.1);
+      }
+
+      .remarks-group textarea::placeholder {
+        color: #999;
+        font-size: 14px;
+      }
+
+      @media (max-width: 768px) {
+        .remarks-group textarea {
+          min-height: 60px;
+        }
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-content {
+        background: white;
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        animation: slideDown 0.3s ease-out;
+      }
+
+      .success-modal {
+        text-align: center;
+        max-width: 400px;
+        padding: 40px;
+      }
+
+      .success-icon {
+        color: #4CAF50;
+        font-size: 64px;
+        margin-bottom: 20px;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-top: 20px;
+      }
+
+      @keyframes slideDown {
+        from { transform: translateY(-100px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+
+      @keyframes scaleIn {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+      }
+
+      .success-modal {
+        animation: scaleIn 0.3s ease-out;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="form-container">
-        <h1>Shirt Measurements</h1>
-        <form id="shirtForm">
-            <div class="measurement-group">
-                <div class="input-group">
-                    <label for="neck">Neck (inches)</label>
-                    <input type="number" id="neck" name="neck" step="0.1" required>
-                </div>
-                <div class="input-group">
-                    <label for="chest">Chest (inches)</label>
-                    <input type="number" id="chest" name="chest" step="0.1" required>
-                </div>
-                <div class="input-group">
-                    <label for="waist">Waist (inches)</label>
-                    <input type="number" id="waist" name="waist" step="0.1" required>
-                </div>
-                <div class="input-group">
-                    <label for="hips">Hips (inches)</label>
-                    <input type="number" id="hips" name="hips" step="0.1" required>
-                </div>
-                <div class="input-group">
-                    <label for="shoulder">Shoulder Width (inches)</label>
-                    <input type="number" id="shoulder" name="shoulder" step="0.1" required>
-                </div>
-                <div class="input-group">
-                    <label for="sleeve">Sleeve Length (inches)</label>
-                    <input type="number" id="sleeve" name="sleeve" step="0.1" required>
-                </div>
-                <div class="input-group">
-                    <label for="length">Shirt Length (inches)</label>
-                    <input type="number" id="length" name="length" step="0.1" required>
-                </div>
-                <div class="input-group">
-                    <label for="bicep">Bicep (inches)</label>
-                    <input type="number" id="bicep" name="bicep" step="0.1" required>
-                </div>
-            </div>
-            <button type="submit" class="btn-submit">Submit Measurements</button>
+      <h1>Shirt Measurements</h1>
+      <form id="shirtForm">
+        <div class="measurement-group">
+          <div class="input-group">
+            <label for="neck">Neck (inches)</label>
+            <input type="number" id="neck" name="neck" step="0.1" required />
+          </div>
+          <div class="input-group">
+            <label for="chest">Chest (inches)</label>
+            <input type="number" id="chest" name="chest" step="0.1" required />
+          </div>
+          <div class="input-group">
+            <label for="waist">Waist (inches)</label>
+            <input type="number" id="waist" name="waist" step="0.1" required />
+          </div>
+          <div class="input-group">
+            <label for="hips">Hips (inches)</label>
+            <input type="number" id="hips" name="hips" step="0.1" required />
+          </div>
+          <div class="input-group">
+            <label for="shoulder">Shoulder Width (inches)</label>
+            <input
+              type="number"
+              id="shoulder"
+              name="shoulder"
+              step="0.1"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="sleeve">Sleeve Length (inches)</label>
+            <input
+              type="number"
+              id="sleeve"
+              name="sleeve"
+              step="0.1"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="length">Shirt Length (inches)</label>
+            <input
+              type="number"
+              id="length"
+              name="length"
+              step="0.1"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="bicep">Bicep (inches)</label>
+            <input type="number" id="bicep" name="bicep" step="0.1" required />
+          </div>
+        </div>
+
+        <div class="remarks-group">
+          <label for="remarks">Additional Notes (Optional)</label>
+          <textarea
+            id="remarks"
+            name="remarks"
+            placeholder="Enter any additional requirements or special instructions..."
+            rows="3"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit Measurements</button>
+      </form>
+    </div>
+
+    <div id="personalDetailsModal" class="modal">
+      <div class="modal-content">
+        <h2>Personal Details</h2>
+        <form id="personalDetailsForm">
+          <div class="input-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" required>
+          </div>
+          <div class="input-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="button-group">
+            <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+            <button type="submit" class="btn-primary">Save Details</button>
+          </div>
         </form>
+      </div>
+    </div>
+
+    <div id="successModal" class="modal">
+      <div class="modal-content success-modal">
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>Measurements Saved!</h2>
+        <p>Your measurements have been successfully saved.</p>
+        <button class="btn-submit" onclick="closeSuccessModal()">OK</button>
+      </div>
     </div>
 
     <script>
-        document.getElementById('shirtForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Add your form submission logic here
-            alert('Measurements submitted successfully!');
-        });
+      let currentMeasurements = {};
+
+      // Handle the initial form submission
+      document.getElementById('shirtForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Collect measurements
+        const formData = new FormData(this);
+        currentMeasurements = Object.fromEntries(formData.entries());
+        
+        // Show personal details modal
+        document.getElementById('personalDetailsModal').style.display = 'block';
+      });
+
+      // Handle personal details submission
+      document.getElementById('personalDetailsForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const personalData = new FormData(this);
+        const personalDetails = Object.fromEntries(personalData.entries());
+        
+        // Combine measurements and personal details
+        const completeData = {
+          personalDetails,
+          measurements: currentMeasurements,
+          type: 'shirt',
+          date: new Date().toISOString()
+        };
+        
+        try {
+          // Save to localStorage
+          const existingData = JSON.parse(localStorage.getItem('measurements') || '[]');
+          existingData.push(completeData);
+          localStorage.setItem('measurements', JSON.stringify(existingData));
+          
+          // Close personal details modal
+          closeModal();
+          
+          // Show success modal
+          document.getElementById('successModal').style.display = 'block';
+          
+        } catch (error) {
+          alert('Error saving measurements. Please try again.');
+          console.error(error);
+        }
+      });
+
+      function closeModal() {
+        document.getElementById('personalDetailsModal').style.display = 'none';
+      }
+
+      function closeSuccessModal() {
+        document.getElementById('successModal').style.display = 'none';
+        document.getElementById('shirtForm').reset();
+        currentMeasurements = {};
+      }
+
+      // Close modals when clicking outside
+      window.onclick = function(event) {
+        const personalModal = document.getElementById('personalDetailsModal');
+        const successModal = document.getElementById('successModal');
+        
+        if (event.target === personalModal) {
+          closeModal();
+        } else if (event.target === successModal) {
+          closeSuccessModal();
+        }
+      }
+
+      // Add escape key handler
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeModal();
+          closeSuccessModal();
+        }
+      });
     </script>
-</body>
+  </body>
 </html>

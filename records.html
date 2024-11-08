@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurement Records - Tailz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: "Libre Franklin", sans-serif;
+            margin: 0;
+            padding: 0;
+            background: rgba(85, 61, 17, 0.403);
+            background-image: url(/Files/BG/Shop-2.jpg);
+            background-size: cover;
+            backdrop-filter: blur(5px);
+            /* min-height: 100vh; */
+        }
+
+        /* Navbar styles from home.html */
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .records-container {
+            max-width: 1200px;
+            margin: 90px auto 20px;
+            padding: 20px;
+        }
+
+        .search-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .filter-select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .record-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .record-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .measurements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .measurement-item {
+            display: flex;
+            justify-content: space-evenly;
+            /* justify-content: start; */
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include your navbar here -->
+    
+    <div class="records-container">
+        <h1>Measurement Records</h1>
+        <div class="search-section">
+            <input type="text" class="search-input" placeholder="Search by name..." id="searchInput">
+            <select class="filter-select" id="filterSelect">
+                <option value="all">All</option>
+                <option value="name">Name</option>
+                <option value="phone">Phone</option>
+                <option value="email">Email</option>
+            </select>
+        </div>
+        <div id="recordsList"></div>
+    </div>
+
+    <script>
+        function loadRecords() {
+            const records = JSON.parse(localStorage.getItem('measurements') || '[]');
+            const recordsList = document.getElementById('recordsList');
+            const searchInput = document.getElementById('searchInput');
+            const filterSelect = document.getElementById('filterSelect');
+            
+            function displayRecords(filteredRecords = records) {
+                recordsList.innerHTML = filteredRecords.map(record => `
+                    <div class="record-card">
+                        <div class="record-header">
+                            <div>
+                                <h3>${record.personalDetails.fullName}</h3>
+                                <p>${record.personalDetails.phone} | ${record.personalDetails.email}</p>
+                            </div>
+                            <div>
+                                <p>${new Date(record.date).toLocaleDateString()}</p>
+                                <p>${record.type.toUpperCase()}</p>
+                            </div>
+                        </div>
+                        <div class="measurements-grid">
+                            ${Object.entries(record.measurements)
+                                .map(([key, value]) => `
+                                    <div class="measurement-item">
+                                        <span>${key}:</span>
+                                        <span>${value}</span>
+                                    </div>
+                                `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Initial display
+            displayRecords();
+
+            // Search functionality
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredRecords = records.filter(record => 
+                    record.personalDetails.fullName.toLowerCase().includes(searchTerm) ||
+                    record.personalDetails.phone.includes(searchTerm) ||
+                    record.personalDetails.email.toLowerCase().includes(searchTerm)
+                );
+                displayRecords(filteredRecords);
+            });
+
+            // Filter functionality
+            filterSelect.addEventListener('change', (e) => {
+                const filterValue = e.target.value;
+                const filteredRecords = records.filter(record => {
+                    if (filterValue === 'all') return true;
+                    if (filterValue === 'name') return record.personalDetails.fullName.toLowerCase().includes(searchInput.value.toLowerCase());
+                    if (filterValue === 'phone') return record.personalDetails.phone.includes(searchInput.value);
+                    if (filterValue === 'email') return record.personalDetails.email.toLowerCase().includes(searchInput.value.toLowerCase());
+                    return false;
+                });
+                displayRecords(filteredRecords);
+            });
+        }
+
+        // Load records when page loads
+        document.addEventListener('DOMContentLoaded', loadRecords);
+    </script>
+</body>
+</html> 
